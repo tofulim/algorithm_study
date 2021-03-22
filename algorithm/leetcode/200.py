@@ -17,13 +17,22 @@ class Solution:
                         continue
                     visit[newy][newx]=True
                     stack.append((newy,newx))
-                
+        
+        def dfs(grid,visit,i,j):
+            for k in range(4):
+                newy,newx=i+y[k],j+x[k]
+                if newx<0 or newx>=m or newy<0 or newy>=n or visit[newy][newx]==True or grid[newy][newx]=='0':
+                    continue
+                visit[newy][newx]=True
+                dfs(grid,visit,newy,newx)
+    
         
         for i in range(n):
             for j in range(m):
                 if grid[i][j]=='1' and visit[i][j]==False:
                     visit[i][j]=True
                     bfs(grid,visit,i,j)
+                    dfs(grid,visit,i,j)
                     cnt+=1
         return cnt
        
