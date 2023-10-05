@@ -46,7 +46,6 @@ class Solution {
                     // 시간이 모자라는 stack task는 시간 갱신 후 다시 넣는다
                     int remain_time = next_task.start_minutes - curr_time;
                     stack_task.playtime -= remain_time;
-                    curr_time = next_task.start_minutes;
                     stack.add(stack_task);
                     break;
                 }
